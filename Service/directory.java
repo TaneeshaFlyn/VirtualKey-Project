@@ -2,7 +2,7 @@ package Service;
 
 import java.io.File;
 
-import Directory.directory;
+import Directory.directorys;
 
 
 public class directory {

@@ -7,7 +7,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
 
-public class directory {
+public class directorys {
 
    public static final String name = "src/main/directory/";
 

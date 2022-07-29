@@ -78,8 +78,7 @@ public class Welcome implements Screen {
     public void ShowFiles() {
 
         //TODO: Get the files from the Directory
-    	
-    	//Finished TODO Task
+
 
         System.out.println("List of Files: ");
     	DirectoryService.PrintFiles();

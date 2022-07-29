@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Directory.directory;
+import Directory.directorys;
 import Service.screen;
 
 
@@ -80,10 +80,7 @@ public class options implements screen {
         }
 
     }
-    
-    //TODO: Add functionality to all 
-    
-    // Finished TODO
+
 
     public void AddFile() {
         System.out.println("Please Enter the Filename:");
@@ -93,7 +90,7 @@ public class options implements screen {
         System.out.println("You are adding a file named: " + fileName);
         
 		try {
-			Path path = FileSystems.getDefault().getPath(Directory.name + fileName).toAbsolutePath();
+			Path path = FileSystems.getDefault().getPath(directory.name + fileName).toAbsolutePath();
 			File file = new File(dir.getName() + fileName);
 			
 		      if (file.createNewFile()) {
@@ -119,8 +116,7 @@ public class options implements screen {
         System.out.println("You are deleting a file named: " + fileName);
         
         
-	    //TODO: Delete file
-        // Finished TODO
+
         
 		Path path = FileSystems.getDefault().getPath(Directory.name + fileName).toAbsolutePath();
 		File file = path.toFile();

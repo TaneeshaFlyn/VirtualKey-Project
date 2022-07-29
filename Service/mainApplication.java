@@ -1,6 +1,6 @@
 package Service;
 
-import screen.welcome;
+import Screen.Welcome;
 
 public class mainApplication {
 

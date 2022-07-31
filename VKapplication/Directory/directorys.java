@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 public class directorys {
 
-   public static final String name = "src/main/directory/";
+   public static final String name = "VKapplication/directory/";
 
     private ArrayList<File> files = new ArrayList<File>();
     

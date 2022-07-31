@@ -10,10 +10,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Directory.directorys;
-import Service.screen;
+import Service.screens;
 
 
-public class options implements screen {
+public class options implements interfaces {
 	
 	private Directory dir = new Directory();
 	
@@ -66,9 +66,9 @@ public class options implements screen {
 
             case 4: //Return to Menu
             	
-            	screen.setCurrentScreen(screen.Welcome);
-                screen.getCurrentScreen().Show();
-                screen.getCurrentScreen().GetUserInput();
+            	screens.setCurrentScreen(screens.Welcome);
+                screens.getCurrentScreen().Show();
+                screens.getCurrentScreen().GetUserInput();
                 
                 break;
 

@@ -1,6 +1,6 @@
 package Screen;
 
-public interface screen {
+public interface interfaces {
 
     public void Show();
 

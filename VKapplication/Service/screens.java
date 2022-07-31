@@ -1,33 +1,30 @@
 package Service;
 
 import Screen.options;
-import Screen.screen;
-import Screen.Welcome;
-import Directory.directorys;
+import Screen.interfaces;
+import Screen.Welcome; 
 
 
 public class screens {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
-	//Directory dir = new Directory();
-
-
-
-	public static welcome welcome = new welcome();
+	public static Welcome Welcome = new Welcome();
     public static options options = new options();
 
 
-
-    public static screens CurrentScreen = welcome;
-
-
-    public static screens getCurrentScreen() {
-        return CurrentScreen;
-    }
+    public static interfaces CurrentScreen = Welcome;
 
 
-    public static void setCurrentScreen(screens currentScreen) {
+    public static void setCurrentScreen(interfaces currentScreen) {
         CurrentScreen = currentScreen;
     }
 
 
+    public static interfaces getCurrentScreen() {
+        return CurrentScreen;
+    }
+
+
+    public static void setCurrentScreen(options currentScreen) {
+        CurrentScreen = currentScreen;
+    }
 }

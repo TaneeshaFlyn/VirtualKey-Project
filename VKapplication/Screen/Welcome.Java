@@ -1,17 +1,17 @@
 package Screen;
 
-import services.DirectoryService;
-import services.ScreenService;
+import Service.Screendirectory;
+import Service.screens;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class Welcome implements Screen {
+public class Welcome implements interfaces {
 
     private String welcomeText = "Welcome to VirtualKey!";
-    private String developerText = "Developer: Taneesha Flynn";
+    private String developerText = "Developer: Tanisha Flynn";
 
     private ArrayList<String> options = new ArrayList<>();
 
@@ -60,9 +60,9 @@ public class Welcome implements Screen {
                 break;
                 
             case 2: // Show File Options menu
-            	ScreenService.setCurrentScreen(ScreenService.FileOptionsScreen);
-                ScreenService.getCurrentScreen().Show();
-                ScreenService.getCurrentScreen().GetUserInput();
+            	screens.setCurrentScreen(screens.options);
+                screens.getCurrentScreen().Show();
+                screens.getCurrentScreen().GetUserInput(); 
                 
                 this.Show();
                 
@@ -77,11 +77,11 @@ public class Welcome implements Screen {
 
     public void ShowFiles() {
 
-        //TODO: Get the files from the Directory
+        //Get the files Directory
 
 
         System.out.println("List of Files: ");
-    	DirectoryService.PrintFiles();
+    	Screendirectory.PrintFiles();
 
     }
     

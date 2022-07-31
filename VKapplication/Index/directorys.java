@@ -1,7 +1,8 @@
-package Directory;
+package Index;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.io.File;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
@@ -9,7 +10,7 @@ import java.nio.file.Path;
 
 public class directorys {
 
-   public static final String name = "VKapplication/directory/";
+   public static final String name = "scr/main/directory/";
 
     private ArrayList<File> files = new ArrayList<File>();
     
@@ -26,7 +27,7 @@ public class directorys {
     	files.forEach(f -> System.out.println(f));
     }
 
-    public ArrayList<File> fillFiles() {
+    public List<File> fillFiles() {
     	
         File[] directoryFiles = Dfiles.listFiles();
         
@@ -48,11 +49,6 @@ public class directorys {
     	
     	fillFiles();
     	return files;
-    }
-    
-    
-    public void mergeSort() {
-    	
     }
     
 }

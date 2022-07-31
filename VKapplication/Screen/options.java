@@ -9,34 +9,42 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Directory.directorys;
+import Index.directorys;
+import Service.Screendirectory;
 import Service.screens;
 
 
 public class options implements interfaces {
 	
-	private Directory dir = new Directory();
+	//private Directory dir = new Directory(); // ???  redddd
 	
-	private ArrayList<String> options = new ArrayList<>();
+	private ArrayList<String> fileOptions = new ArrayList<>();
 
     public options() {
     	
-    	options.add("1. Add a File");
-        options.add("2. Delete A File");
-        options.add("3. Search A File");
-        options.add("4. Return to Menu");
+    	fileOptions.add("1. Add a File");
+        fileOptions.add("2. Delete A File");
+        fileOptions.add("3. Search A File");
+        fileOptions.add("4. Return to Menu");
         
     }
     
+    /* (non-Javadoc)
+     * @see Screen.interfaces#Show()
+     */
     @Override
     public void Show() {
     	System.out.println("File Options Menu");
-        for (String s : options) {
+        for (String s : fileOptions) {
             System.out.println(s);
         }
 
     }
-
+    
+    /* (non-Javadoc)
+     * @see Screen.interfaces#GetUserInput()
+     */
+    @Override
     public void GetUserInput() {
         int selectedOption;
         while ((selectedOption = this.getOption()) != 4) {
@@ -49,29 +57,30 @@ public class options implements interfaces {
         
     	switch(option) {
 
-            case 1: //Add File
+            case 1: // Add File
                 this.AddFile();
                 
                 this.Show();
                 break;
-            case 2: //Delete File
+            case 2: // Delete File
                 this.DeleteFile();
                 
                 this.Show();
                 break;
-            case 3: //Search File
+            case 3: // Search File
                 this.SearchFile();
                 this.Show();
                 break;
-
-            case 4: //Return to Menu
+            
+               
+        //* */ case 4: // Return to Menu
             	
-            	screens.setCurrentScreen(screens.Welcome);
-                screens.getCurrentScreen().Show();
-                screens.getCurrentScreen().GetUserInput();
+            //* 	Screendirectory.setCurrentScreen(Screendirectory.Welcome);
+             //*    Screendirectory.getCurrentScreen().Show();
+              //*   Screendirectory.getCurrentScreen().GetUserInput();
                 
-                break;
-
+               //*  break;//* 
+              
             default:
                 System.out.println("Invalid Option");
                 break;
@@ -81,7 +90,6 @@ public class options implements interfaces {
 
     }
 
-
     public void AddFile() {
         System.out.println("Please Enter the Filename:");
 
@@ -90,7 +98,7 @@ public class options implements interfaces {
         System.out.println("You are adding a file named: " + fileName);
         
 		try {
-			Path path = FileSystems.getDefault().getPath(directory.name + fileName).toAbsolutePath();
+			Path path = FileSystems.getDefault().getPath(directorys.name + fileName).toAbsolutePath();
 			File file = new File(dir.getName() + fileName);
 			
 		      if (file.createNewFile()) {
@@ -116,9 +124,7 @@ public class options implements interfaces {
         System.out.println("You are deleting a file named: " + fileName);
         
         
-
-        
-		Path path = FileSystems.getDefault().getPath(Directory.name + fileName).toAbsolutePath();
+		Path path = FileSystems.getDefault().getPath(directorys.name + fileName).toAbsolutePath();
 		File file = path.toFile();
 	      if (file.delete()) {
 	    	  System.out.println("Deleted File: " + file.getName());
@@ -128,6 +134,8 @@ public class options implements interfaces {
 	      }
     }
     
+    private directorys dir = new directorys();
+
     public void SearchFile() {
     	
     	Boolean found = false;
@@ -137,9 +145,6 @@ public class options implements interfaces {
         String fileName = this.getInputString();
 
         System.out.println("You are searching for a file named: " + fileName);
-        
-        //TODO Fix it so ArrayList obtains files
-        //Finished TODO
         
         ArrayList<File> files = dir.getFiles();
         

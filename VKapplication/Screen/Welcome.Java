@@ -2,6 +2,7 @@ package Screen;
 
 import Service.Screendirectory;
 import Service.screens;
+import Screen.interfaces;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -60,9 +61,9 @@ public class Welcome implements interfaces {
                 break;
                 
             case 2: // Show File Options menu
-            	screens.setCurrentScreen(screens.options);
-                screens.getCurrentScreen().Show();
-                screens.getCurrentScreen().GetUserInput(); 
+            	screens.setCurrentScreen(screens.CurrentScreen);
+                ((interfaces) screens.getCurrentScreen()).Show();
+                ((interfaces) screens.getCurrentScreen()).GetUserInput(); 
                 
                 this.Show();
                 

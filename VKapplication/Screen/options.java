@@ -73,14 +73,14 @@ public class options implements interfaces {
                 break;
             
                
-        //* */ case 4: // Return to Menu
-            	
-            //* 	Screendirectory.setCurrentScreen(Screendirectory.Welcome);
-             //*    Screendirectory.getCurrentScreen().Show();
-              //*   Screendirectory.getCurrentScreen().GetUserInput();
-                
-               //*  break;//* 
-              
+                case 4: // Return to Menu
+
+            	screens.setCurrentScreen(screens.CurrentScreen);
+                ((interfaces) screens.getCurrentScreen()).Show();
+                ((interfaces) screens.getCurrentScreen()).GetUserInput();
+             
+                break;
+
             default:
                 System.out.println("Invalid Option");
                 break;

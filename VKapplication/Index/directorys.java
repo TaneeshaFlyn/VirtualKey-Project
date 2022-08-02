@@ -12,11 +12,11 @@ public class directorys {
 
    public static final String name = "scr/main/directory/";
 
-    private ArrayList<File> files = new ArrayList<File>();
+    private ArrayList<File> files = new ArrayList<>();
     
     Path path = FileSystems.getDefault().getPath(name).toAbsolutePath();
     
-    File Dfiles = path.toFile();
+    File Defiles = path.toFile();
        
     public String getName() {
         return name;
@@ -24,12 +24,12 @@ public class directorys {
     
     public void print() {
     	System.out.println("Existing Files: ");
-    	files.forEach(f -> System.out.println(f));
+    	files.forEach(System.out::println);
     }
 
     public List<File> fillFiles() {
     	
-        File[] directoryFiles = Dfiles.listFiles();
+        File[] directoryFiles = Defiles.listFiles();
         
         
         
@@ -45,7 +45,7 @@ public class directorys {
     	return files;
     }
 
-    public ArrayList<File> getFiles() {
+    public List<File> getFiles() {
     	
     	fillFiles();
     	return files;

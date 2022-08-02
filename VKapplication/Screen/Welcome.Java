@@ -2,7 +2,6 @@ package Screen;
 
 import Service.Screendirectory;
 import Service.screens;
-import Screen.interfaces;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -62,8 +61,8 @@ public class Welcome implements interfaces {
                 
             case 2: // Show File Options menu
             	screens.setCurrentScreen(screens.CurrentScreen);
-                ((interfaces) screens.getCurrentScreen()).Show();
-                ((interfaces) screens.getCurrentScreen()).GetUserInput(); 
+                screens.CurrentScreen.Show();
+                screens.CurrentScreen.GetUserInput(); 
                 
                 this.Show();
                 
@@ -87,16 +86,17 @@ public class Welcome implements interfaces {
     }
     
     private int getOption() {
-        Scanner in = new Scanner(System.in);
+        try (Scanner in = new Scanner(System.in)) {
+            int returnOption = 0;
+            try {
+                returnOption = in.nextInt();
+            }
+            catch (InputMismatchException ex) {
+             System.out.println("Invalid input");
 
-        int returnOption = 0;
-        try {
-            returnOption = in.nextInt();
+            }
+            return returnOption;
         }
-        catch (InputMismatchException ex) {
-
-        }
-        return returnOption;
 
     }
 }

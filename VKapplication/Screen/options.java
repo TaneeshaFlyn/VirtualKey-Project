@@ -7,18 +7,22 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 import Index.directorys;
-import Service.Screendirectory;
 import Service.screens;
 
 
 public class options implements interfaces {
 	
-	//private Directory dir = new Directory(); // ???  redddd
+	//private Directory dir = new Directory(); // ???  
 	
-	private ArrayList<String> fileOptions = new ArrayList<>();
+	/**
+     *
+     */
+    private static final String PLEASE_ENTER_THE_FILENAME = "Please Enter the Filename:";
+    private ArrayList<String> fileOptions = new ArrayList<>();
 
     public options() {
     	
@@ -76,29 +80,31 @@ public class options implements interfaces {
                 case 4: // Return to Menu
 
             	screens.setCurrentScreen(screens.CurrentScreen);
-                ((interfaces) screens.getCurrentScreen()).Show();
-                ((interfaces) screens.getCurrentScreen()).GetUserInput();
+                screens.getCurrentScreen().Show();
+                screens.getCurrentScreen().GetUserInput();
              
                 break;
 
             default:
                 System.out.println("Invalid Option");
-                break;
-                
+                break;   
                 
         }
 
     }
 
+    /**
+     * 
+     */
     public void AddFile() {
-        System.out.println("Please Enter the Filename:");
+        System.out.println(PLEASE_ENTER_THE_FILENAME);
 
         String fileName = this.getInputString();
 
         System.out.println("You are adding a file named: " + fileName);
         
 		try {
-			Path path = FileSystems.getDefault().getPath(directorys.name + fileName).toAbsolutePath();
+			FileSystems.getDefault().getPath(directorys.name + fileName).toAbsolutePath();
 			File file = new File(dir.getName() + fileName);
 			
 		      if (file.createNewFile()) {
@@ -115,9 +121,12 @@ public class options implements interfaces {
         
     
     
+    /**
+     * 
+     */
     public void DeleteFile() {
     	
-    	System.out.println("Please Enter the Filename:");
+    	System.out.println(PLEASE_ENTER_THE_FILENAME);
 
         String fileName = this.getInputString();
 
@@ -136,17 +145,20 @@ public class options implements interfaces {
     
     private directorys dir = new directorys();
 
+    /**
+     * 
+     */
     public void SearchFile() {
     	
     	Boolean found = false;
     	
-    	System.out.println("Please Enter the Filename:");
+    	System.out.println(PLEASE_ENTER_THE_FILENAME);
 
         String fileName = this.getInputString();
 
         System.out.println("You are searching for a file named: " + fileName);
         
-        ArrayList<File> files = dir.getFiles();
+        List<File> files = dir.getFiles();
         
         
         for(int i = 0; i < files.size(); i++) {
@@ -155,29 +167,30 @@ public class options implements interfaces {
 				found = true;
 			}
         }
-        if (found == false) {
+        if (!Boolean.TRUE.equals(found)) {
         	System.out.println("File not found");
         }
     }
     
     private String getInputString() {
 
-        Scanner in = new Scanner(System.in);
-        return(in.nextLine());
+        try (Scanner in = new Scanner(System.in)) {
+            return(in.nextLine());
+        }
 
     }
     
     private int getOption() {
-        Scanner in = new Scanner(System.in);
-
-        int returnOption = 0;
-        try {
-            returnOption = in.nextInt();
+        try (Scanner in = new Scanner(System.in)) {
+            int returnOption = 0;
+            try {
+                returnOption = in.nextInt();
+            }
+            catch (InputMismatchException ex) {
+            	System.out.println("Invalid input");
+            }
+            return returnOption;
         }
-        catch (InputMismatchException ex) {
-        	System.out.println("Invalid input");
-        }
-        return returnOption;
 
     }
 

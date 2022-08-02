@@ -18,6 +18,9 @@ public class Screendirectory {
             System.out.println(file.getName());
         }
     }
+    /**
+     * @return
+     */
     public static directorys getFileDirectory() {
         return fileDirectory;
     }

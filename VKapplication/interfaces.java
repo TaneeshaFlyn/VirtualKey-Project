@@ -1,5 +1,3 @@
-package Screen;
-
 public interface interfaces {
 
     public void Show();
